@@ -6,6 +6,20 @@
 
 容悦 E5（OpenWrt）信息屏应用。当前版本 **v1.4**，应用 ID `webapps`。
 
+## 截图
+
+![LuCI 信息屏](screenshots/luci-screen.jpg)
+
+LuCI：服务 → 信息屏应用 →「信息屏」标签，在浏览器里显示和操作信息屏界面。
+
+![LuCI 应用管理](screenshots/luci-apps.jpg)
+
+「应用管理」标签：已安装的应用、版本，以及设置和卸载。
+
+<img src="screenshots/app-list.png" alt="信息屏应用列表" width="320">
+
+设备屏幕上的「应用」页。
+
 ## 安装
 
 1. 下载 [`releases/webapps-v1.4.tar.gz`](releases/webapps-v1.4.tar.gz)。
