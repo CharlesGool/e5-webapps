@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<style>
+	html, body { margin: 0; background: #0b0e13; color: #e8ecf2;
+		font-family: "Noto Sans CJK SC", "DejaVu Sans", sans-serif; user-select: none; cursor: none; }
+	body { padding: 8px; }
+	.card { background: #161b23; border-radius: 10px; padding: 9px 11px; margin-bottom: 7px; }
+	.row { display: flex; justify-content: space-between; align-items: baseline; }
+	.sub { color: #8b95a5; font-size: 12px; line-height: 1.6; }
+	.val { font-weight: bold; }
+	.good { color: #3ccf7a; } .poor { color: #f0625a; }
+</style>
+</head>
+<body>
+<div class="card" id="state"></div>
+<div class="card sub" id="how"></div>
+<script src="/sdk/e5.js"></script>
+<script>
+'use strict';
+// 网页版应用: whether the LuCI page and its CGI are installed, and where to go.
+const $ = (id) => document.getElementById(id);
+
+function esc(s) {
+	return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+async function load() {
+	let st = null, err = null;
+	try { st = await e5.api('/status'); } catch (e) { err = e.message || String(e); }
+	$('state').innerHTML = err
+		? `<div class="sub poor">${e5.t({ zh: '读取失败：', en: 'Cannot load: ' })}${esc(err)}</div>`
+		: `<div class="row"><span>${e5.t({ zh: 'LuCI 页面', en: 'LuCI pages' })}</span>` +
+		  `<span class="val ${st.installed ? 'good' : 'poor'}">${st.installed ? e5.t({ zh: '已安装', en: 'Installed' }) : e5.t({ zh: '未安装', en: 'Not installed' })}</span></div>` +
+		  (st.error ? `<div class="sub poor">${esc(st.error)}</div>` : '');
+	$('how').textContent = e5.t({
+		zh: '在电脑浏览器打开 LuCI（默认 http://192.168.9.1），登录后进入 服务 → 信息屏应用：“信息屏”标签显示信息屏界面，应用也在里面打开；“应用管理”标签可以安装、卸载应用和改它们的设置。只有登录了 LuCI 才能访问。',
+		en: 'In a browser open LuCI (http://192.168.9.1 by default), log in, then Services -> Info screen apps: the tab 信息屏 shows the screen, its apps open in it; 应用管理 installs and removes apps and has their settings. Only a logged-in LuCI session gets in.'
+	});
+}
+load();
+</script>
+</body>
+</html>
