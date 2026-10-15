@@ -5,6 +5,8 @@
 //   /www/cgi-bin/e5-apps   (e5-apps.cgi) passes requests on to the screen's
 //                          server for a logged-in LuCI session only
 //   LuCI 服务 -> 信息屏应用 -> 网页版   (luci/index.js, luci/menu.json)
+//   LuCI 服务 -> 信息屏应用 -> 信息屏   (luci/screen.js: the screen's own
+//                          interface, a copy kept from the device's screen)
 //
 // The menu file also puts the app list (the page 服务 -> 信息屏应用 opens) in
 // a tab of its own, 应用管理, so that it is one of the tabs beside 底部导航,
@@ -30,6 +32,7 @@ const FILES = [
 	[ 'e5-apps.cgi', '/www/cgi-bin/e5-apps', '755' ],
 	[ 'luci/index.js', '/www/luci-static/resources/view/e5-webapps/index.js', '644' ],
 	[ 'luci/apps.js', '/www/luci-static/resources/view/e5-webapps/apps.js', '644' ],
+	[ 'luci/screen.js', '/www/luci-static/resources/view/e5-webapps/screen.js', '644' ],
 	[ 'luci/menu.json', '/usr/share/luci/menu.d/luci-app-e5-webapps.json', '644' ]
 ];
 
