@@ -1,7 +1,7 @@
 {
 	"id": "webapps",
 	"api_version": 2,
-	"version": "1.0",
+	"version": "1.1",
 	"name": { "zh": "网页版应用", "en": "Apps on the Web" },
 	"description": { "zh": "在电脑浏览器（LuCI）里使用信息屏应用", "en": "Use the screen's apps in a browser (LuCI)" },
 	"entry": "index.html",
