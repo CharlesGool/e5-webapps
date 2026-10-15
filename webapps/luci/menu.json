@@ -1,0 +1,8 @@
+{
+  "admin/services/e5-infoscreen/web": {
+    "title": "网页版",
+    "order": 62,
+    "action": { "type": "view", "path": "e5-webapps/index" },
+    "depends": { "acl": ["luci-app-e5-infoscreen"] }
+  }
+}
