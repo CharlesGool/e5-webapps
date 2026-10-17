@@ -4,7 +4,7 @@
 
 *Use the screen's apps in a browser (LuCI)*
 
-容悦 E5（OpenWrt）信息屏应用。当前版本 **v1.5**，应用 ID `webapps`。
+容悦 E5（OpenWrt）信息屏应用。当前版本 **v1.6**，应用 ID `webapps`。
 
 ## 截图
 
@@ -35,7 +35,7 @@ LuCI：服务 → 信息屏应用 →「信息屏」标签，在浏览器里显�
 
 ## 安装
 
-1. 下载 [`releases/webapps-v1.5.tar.gz`](releases/webapps-v1.5.tar.gz)。
+1. 下载 [`releases/webapps-v1.6.tar.gz`](releases/webapps-v1.6.tar.gz)。
 2. 在信息屏的「应用管理」中安装（LuCI：服务 → 信息屏应用 → 应用管理）。
 3. 安装后文件位于设备上的 `/etc/e5-infoscreen/plugins/webapps/`。
 
@@ -53,7 +53,8 @@ LuCI：服务 → 信息屏应用 →「信息屏」标签，在浏览器里显�
 
 ## 版本
 
-- [v1.5](releases/webapps-v1.5.tar.gz)（当前）：「信息屏」标签旁加模拟按键
+- [v1.6](releases/webapps-v1.6.tar.gz)（当前）：按键区排版修正（「设备」按钮不再换行，* 键字号与数字一致）
+- [v1.5](releases/webapps-v1.5.tar.gz)：「信息屏」标签旁加模拟按键
 - [v1.4](releases/webapps-v1.4.tar.gz)
 - [v1.3](releases/webapps-v1.3.tar.gz)
 - [v1.2](releases/webapps-v1.2.tar.gz)

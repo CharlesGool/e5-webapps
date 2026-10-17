@@ -163,7 +163,10 @@ return view.extend({
 				'class': 'btn cbi-button', 'type': 'button', 'title': TITLES[k] || '',
 				'style': 'min-width:0;width:100%;height:2.6em;margin:0;padding:0 .2em;touch-action:none;user-select:none;' +
 					'font-size:' + (k.length == 1 ? '1.15em' : '0.95em') + (k == 'power' ? ';color:#d9534f' : (k == 'call' ? ';color:#2e9a52' : ''))
-			}, KEYS[k][0]);
+			}, k == '*'
+				// (an asterisk is small and high in most fonts: larger, lowered, the line kept)
+				? E('span', { 'style': 'font-size:1.6em;line-height:0;position:relative;top:.22em' }, '*')
+				: KEYS[k][0]);
 			b.addEventListener('pointerdown', (e) => {
 				if (e.button != 0) return;
 				e.preventDefault();
@@ -188,7 +191,8 @@ return view.extend({
 		}, g[1].map(keyButton)));
 
 		const targetButtons = [ [ 'page', '这里的画面' ], [ 'device', '设备' ] ].map((t) => E('button', {
-			'class': 'btn cbi-button', 'type': 'button', 'data-target': t[0], 'style': 'margin:0',
+			'class': 'btn cbi-button', 'type': 'button', 'data-target': t[0],
+			'style': 'min-width:0;width:100%;height:2.4em;margin:0;padding:0 .2em',
 			'click': () => {
 				releaseAll();
 				target = t[0];
@@ -220,8 +224,9 @@ return view.extend({
 		window.addEventListener('pagehide', releaseAll);
 
 		const keypad = E('div', { 'style': 'width:15.5em;flex:none' }, [
-			E('div', { 'style': 'display:flex;gap:6px;align-items:center;margin-bottom:12px;flex-wrap:wrap' },
-				[ E('span', {}, '按键发送到：') ].concat(targetButtons)),
+			// (the label on a line of its own: beside it, the buttons wrap in some themes)
+			E('div', { 'style': 'margin-bottom:6px' }, '按键发送到：'),
+			E('div', { 'style': 'display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:12px' }, targetButtons),
 			groups[0],
 			groups[1],
 			groups[2],
